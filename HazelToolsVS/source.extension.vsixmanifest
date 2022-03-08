@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="HazelToolsVS" Version="2.0.0" Language="en-US" Publisher="Ignacio Roldán Etcheverry" />
+        <DisplayName>Hazel Tools</DisplayName>
+        <Description xml:space="preserve">Visual Studio integration with the Hazelnut editor, including C# script debugging support</Description>
+        <License>LICENSE.txt</License>
+        <Icon>icon.png</Icon>
+        <Tags>Hazel</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Version="[16.0,18.0)" Id="Microsoft.VisualStudio.Community">
+            <ProductArchitecture>x86</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[16.0,18.0)" Id="Microsoft.VisualStudio.Pro">
+            <ProductArchitecture>x86</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[16.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
+            <ProductArchitecture>x86</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[16.0,18.0)" Id="Microsoft.VisualStudio.Community">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[16.0,18.0)" Id="Microsoft.VisualStudio.Pro">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[16.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+    </Installation>
+    <Assets>
+    </Assets>
+    <Dependencies>
+        <Dependency d:Source="Installed" Id="Microsoft.VisualStudio.MPF.16.0" DisplayName="Visual Studio MPF 16.0" Version="[16.0,)" />
+    </Dependencies>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.MonoDebugger" Version="[16.0,)" DisplayName="Mono debugger" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[16.0,)" DisplayName="Visual Studio core editor" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.LanguageServices" Version="[16.0,)" DisplayName="Roslyn Language Services" />
+
+        <!--
+        Found no better way to make Visual Studio install Clide when installing this extension.
+        Adding Clide to Dependencies doesn't work. VisualStudio fails to resolve it during installation.
+        We can include 'Clide.Core.Windows.dll' as a Mef component in this extension, but that causes
+        issues if Xamarin is installed too (two 'Clide.Core.Windows.dll' so components are exported twice).
+        As such, this extension sadly requires Xamarin to be installed as well for now. It's a quite
+        bulky dependency, so we should continue looking for possible alternatives to this.
+        -->
+        <Prerequisite Id="Component.Xamarin" Version="[16.0,)" DisplayName="Xamarin" />
+    </Prerequisites>
+</PackageManifest>
