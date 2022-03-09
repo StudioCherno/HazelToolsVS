@@ -2,6 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Microsoft.VisualStudio.Shell;
+using Mono.Debugging.Client;
 using Task = System.Threading.Tasks.Task;
 
 namespace HazelToolsVS
@@ -40,6 +41,15 @@ namespace HazelToolsVS
 
         #region Package Members
 
+        public static HazelToolsPackage Instance { get; private set; }
+
+        public HazelToolsPackage()
+		{
+            Instance = this;
+		}
+
+        internal HazelSolutionEventsListener SolutionEventsListener { get; private set; }
+
         /// <summary>
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
         /// where you can put all the initialization code that rely on services provided by VisualStudio.
@@ -53,6 +63,9 @@ namespace HazelToolsVS
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await AttachHazelnutCommand.InitializeAsync(this);
+
+            SolutionEventsListener = new HazelSolutionEventsListener(this);
+            DebuggerLoggingService.CustomLogger = new MonoSoftCustomLogger(this);
         }
 
         #endregion

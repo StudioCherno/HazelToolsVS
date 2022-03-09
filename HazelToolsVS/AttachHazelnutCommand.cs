@@ -101,11 +101,17 @@ namespace HazelToolsVS
 			Project project = projectObj as Project;
 
 			Random random = new Random();
-			int port = 8800 + random.Next(0, 100);
+			//int port = 8800 + random.Next(0, 100);
+			int port = 2550;
 
-			var startArgs = new SoftDebuggerListenArgs(project.Name, IPAddress.Loopback, port) { MaxConnectionAttempts = 3 };
+			//var startArgs = new SoftDebuggerListenArgs(project.Name, IPAddress.Loopback, port) { MaxConnectionAttempts = 3 };
+			var startArgs = new SoftDebuggerConnectArgs(project.Name, IPAddress.Loopback, port) { MaxConnectionAttempts = 3 };
 
-			var startInfo = new HazelStartInfo(startArgs, null, project, HazelSessionType.AttachHazelnutDebugger);
+			var startInfo = new HazelStartInfo(startArgs, null, project, HazelSessionType.AttachHazelnutDebugger)
+			{
+				WorkingDirectory = HazelToolsPackage.Instance.SolutionEventsListener?.SolutionDirectory
+			};
+
 			var session = new HazelDebuggerSession();
 			var launcher = new MonoDebuggerLauncher(new Progress<string>());
 			launcher.StartSession(startInfo, session);
