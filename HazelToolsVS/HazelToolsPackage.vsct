@@ -22,7 +22,7 @@
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
-                    <ButtonText>Attach Hazelnut Debugger</ButtonText>
+                    <ButtonText>Attach to Hazelnut</ButtonText>
                 </Strings>
             </Button>
         </Buttons>
