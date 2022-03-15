@@ -38,15 +38,5 @@
         <Prerequisite Id="Microsoft.VisualStudio.Component.MonoDebugger" Version="[16.0,)" DisplayName="Mono debugger" />
         <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[16.0,)" DisplayName="Visual Studio core editor" />
         <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.LanguageServices" Version="[16.0,)" DisplayName="Roslyn Language Services" />
-
-        <!--
-        Found no better way to make Visual Studio install Clide when installing this extension.
-        Adding Clide to Dependencies doesn't work. VisualStudio fails to resolve it during installation.
-        We can include 'Clide.Core.Windows.dll' as a Mef component in this extension, but that causes
-        issues if Xamarin is installed too (two 'Clide.Core.Windows.dll' so components are exported twice).
-        As such, this extension sadly requires Xamarin to be installed as well for now. It's a quite
-        bulky dependency, so we should continue looking for possible alternatives to this.
-        -->
-        <Prerequisite Id="Component.Xamarin" Version="[16.0,)" DisplayName="Xamarin" />
     </Prerequisites>
 </PackageManifest>
