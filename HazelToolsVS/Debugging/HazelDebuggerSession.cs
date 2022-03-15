@@ -19,7 +19,7 @@ namespace HazelToolsVS.Debugging
 			case HazelSessionType.AttachHazelnutDebugger:
 			{
 				m_IsAttached = true;
-				base.OnRun(startInfo);
+				base.OnRun(hazelStartInfo);
 				break;
 			}
 			default:

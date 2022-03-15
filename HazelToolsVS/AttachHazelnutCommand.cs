@@ -100,12 +100,9 @@ namespace HazelToolsVS
 			vsHierarchy.GetProperty(VSConstants.VSITEMID_ROOT, (int)__VSHPROPID.VSHPROPID_ExtObject, out object projectObj);
 			Project project = projectObj as Project;
 
-			Random random = new Random();
-			//int port = 8800 + random.Next(0, 100);
 			int port = 2550;
 
-			//var startArgs = new SoftDebuggerListenArgs(project.Name, IPAddress.Loopback, port) { MaxConnectionAttempts = 3 };
-			var startArgs = new SoftDebuggerConnectArgs(project.Name, IPAddress.Loopback, port) { MaxConnectionAttempts = 3 };
+			var startArgs = new SoftDebuggerConnectArgs(project.Name, IPAddress.Parse("127.0.0.1"), port) { MaxConnectionAttempts = 3 };
 
 			var startInfo = new HazelStartInfo(startArgs, null, project, HazelSessionType.AttachHazelnutDebugger)
 			{
@@ -113,6 +110,7 @@ namespace HazelToolsVS
 			};
 
 			var session = new HazelDebuggerSession();
+			session.Breakpoints.Clear();
 			var launcher = new MonoDebuggerLauncher(new Progress<string>());
 			launcher.StartSession(startInfo, session);
 		}
