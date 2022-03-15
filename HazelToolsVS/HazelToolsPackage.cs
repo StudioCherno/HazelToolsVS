@@ -65,7 +65,6 @@ namespace HazelToolsVS
             await AttachHazelnutCommand.InitializeAsync(this);
 
             SolutionEventsListener = new HazelSolutionEventsListener(this);
-            DebuggerLoggingService.CustomLogger = new MonoSoftCustomLogger(this);
         }
 
         #endregion
