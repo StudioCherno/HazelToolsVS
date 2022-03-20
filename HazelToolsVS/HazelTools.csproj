@@ -50,6 +50,9 @@
     <Compile Include="Debugging\HazelDebuggerSession.cs" />
     <Compile Include="Debugging\HazelStartInfo.cs" />
     <Compile Include="HazelSolutionEventsListener.cs" />
+    <Compile Include="HazelToolsGeneralOptions.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HazelToolsPackage.cs" />
     <Compile Include="SolutionEventsListener.cs" />

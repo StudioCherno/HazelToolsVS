@@ -2,13 +2,14 @@
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.ComponentModel.Design;
+using System.Net;
+using System.IO;
 using Task = System.Threading.Tasks.Task;
 using HazelToolsVS.Debugging;
 using Microsoft.VisualStudio;
 using Mono.Debugging.VisualStudio;
 using EnvDTE;
 using Mono.Debugging.Soft;
-using System.Net;
 
 namespace HazelToolsVS
 {
@@ -34,6 +35,8 @@ namespace HazelToolsVS
 
 		private IVsSolutionBuildManager m_SolutionBuildManager;
 
+		private MenuCommand m_MenuItem;
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="AttachHazelnutCommand"/> class.
 		/// Adds our command handlers for menu (commands must exist in the command table file)
@@ -46,8 +49,8 @@ namespace HazelToolsVS
 			commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
 			var menuCommandID = new CommandID(CommandSet, CommandId);
-			var menuItem = new MenuCommand(this.Execute, menuCommandID);
-			commandService.AddCommand(menuItem);
+			m_MenuItem = new MenuCommand(this.Execute, menuCommandID);
+			commandService.AddCommand(m_MenuItem);
 		}
 
 		/// <summary>
@@ -100,16 +103,17 @@ namespace HazelToolsVS
 			vsHierarchy.GetProperty(VSConstants.VSITEMID_ROOT, (int)__VSHPROPID.VSHPROPID_ExtObject, out object projectObj);
 			Project project = projectObj as Project;
 
-			int port = 2550;
-
-			var startArgs = new SoftDebuggerConnectArgs(project.Name, IPAddress.Parse("127.0.0.1"), port) { MaxConnectionAttempts = 3 };
+			var startArgs = new SoftDebuggerConnectArgs(project.Name, IPAddress.Parse("127.0.0.1"), HazelToolsPackage.Instance.GeneralOptions.ConnectionPort)
+			{
+				MaxConnectionAttempts = HazelToolsPackage.Instance.GeneralOptions.MaxConnectionAttempts
+			};
 
 			var startInfo = new HazelStartInfo(startArgs, null, project, HazelSessionType.AttachHazelnutDebugger)
 			{
 				WorkingDirectory = HazelToolsPackage.Instance.SolutionEventsListener?.SolutionDirectory
 			};
 
-			var session = new HazelDebuggerSession();
+			var session = new HazelDebuggerSession(m_MenuItem);
 			session.Breakpoints.Clear();
 			var launcher = new MonoDebuggerLauncher(new Progress<string>());
 			launcher.StartSession(startInfo, session);
