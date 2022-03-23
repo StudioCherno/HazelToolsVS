@@ -1,7 +1,9 @@
 using System;
 using System.ComponentModel.Design;
+using System.IO;
 using Mono.Debugging.Client;
 using Mono.Debugging.Soft;
+using Mono.Debugger.Soft;
 
 namespace HazelToolsVS.Debugging
 {
@@ -26,7 +28,7 @@ namespace HazelToolsVS.Debugging
 			case HazelSessionType.AttachHazelnutDebugger:
 			{
 				m_IsAttached = true;
-				m_AttachToHazelnutMenuItem.Enabled = false;
+				//m_AttachToHazelnutMenuItem.Enabled = false;
 				base.OnRun(hazelStartInfo);
 				break;
 			}
@@ -38,7 +40,7 @@ namespace HazelToolsVS.Debugging
 		protected override void OnAttachToProcess(ProcessInfo processInfo)
 		{
 			base.OnAttachToProcess(processInfo);
-			m_AttachToHazelnutMenuItem.Enabled = false;
+			//m_AttachToHazelnutMenuItem.Enabled = false;
 		}
 
 		protected override string GetConnectingMessage(DebuggerStartInfo dsi)
@@ -50,7 +52,19 @@ namespace HazelToolsVS.Debugging
 		{
 			// The session was manually terminated
 			if (HasExited)
+			{
+				//m_AttachToHazelnutMenuItem.Enabled = true;
+				base.OnConnectionError(ex);
 				return;
+			}
+
+			if (ex is VMDisconnectedException || ex is IOException)
+			{
+				HasExited = true;
+				base.OnConnectionError(ex);
+				//m_AttachToHazelnutMenuItem.Enabled = true;
+				return;
+			}
 
 			string message = "An error occured when trying to attach to Hazelnut. Please make sure that Hazelnut is running and that it's up-to-date.";
 			message += Environment.NewLine;
@@ -71,7 +85,7 @@ namespace HazelToolsVS.Debugging
 			}
 			
 			_ = HazelToolsPackage.Instance.ShowErrorMessageBoxAsync("Connection Error", message);
-			m_AttachToHazelnutMenuItem.Enabled = true;
+			//m_AttachToHazelnutMenuItem.Enabled = true;
 			base.OnConnectionError(ex);
 		}
 
@@ -79,6 +93,7 @@ namespace HazelToolsVS.Debugging
 		{
 			if (m_IsAttached)
 			{
+				m_IsAttached = false;
 				base.OnDetach();
 			}
 			else
@@ -86,7 +101,7 @@ namespace HazelToolsVS.Debugging
 				base.OnExit();
 			}
 
-			m_AttachToHazelnutMenuItem.Enabled = true;
+			//m_AttachToHazelnutMenuItem.Enabled = true;
 		}
 	}
 }
