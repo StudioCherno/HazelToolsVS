@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="HazelToolsVS" Version="1.2.0" Language="en-US" Publisher="Studio Cherno" />
+        <Identity Id="StudioCherno-HazelToolsVS" Version="1.2.0" Language="en-US" Publisher="Studio Cherno" />
         <DisplayName>Hazel Tools</DisplayName>
         <Description xml:space="preserve">Visual Studio integration with the Hazelnut editor, including C# script debugging support</Description>
-        <MoreInfo>https://github.com/peter1745/HazelTools-VisualStudio</MoreInfo>
+        <MoreInfo>https://github.com/StudioCherno/HazelToolsVS</MoreInfo>
         <License>LICENSE.txt</License>
         <Icon>icon.png</Icon>
         <Tags>Hazel</Tags>
