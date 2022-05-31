@@ -21,6 +21,7 @@
         </InstallationTarget>
     </Installation>
     <Assets>
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="HazelCSharpTemplateProject" d:TargetPath="|HazelCSharpTemplateProject;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
     </Assets>
     <Prerequisites>
         <Prerequisite Id="Microsoft.VisualStudio.Component.MonoDebugger" Version="[17.0,)" DisplayName="Mono debugger" />

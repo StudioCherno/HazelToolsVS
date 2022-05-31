@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Hazel Entity Script</Name>
+    <Description>An empty C# script that inherits from Hazels Entity class</Description>
+    <Icon>HazelCSharpTemplateProject.ico</Icon>
+    <TemplateID>ffa4a5df-2e25-4234-9bf0-0cdea8d75db6</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <LanguageTag>CSharp</LanguageTag>
+    <RequiredFrameworkVersion>4.7.2</RequiredFrameworkVersion>
+    <MaxFrameworkVersion>4.7.2</MaxFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>Class.cs</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectItem ReplaceParameters="true">Class.cs</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

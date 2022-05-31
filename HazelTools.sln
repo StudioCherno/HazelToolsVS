@@ -4,22 +4,52 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HazelTools", "HazelToolsVS\HazelTools.csproj", "{7D64803D-2F8D-4597-9762-A316C74E9816}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HazelCSharpTemplateProject", "HazelCSharpTemplateProject\HazelCSharpTemplateProject.csproj", "{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		net_4_5_Debug|Any CPU = net_4_5_Debug|Any CPU
+		net_4_5_Debug|x86 = net_4_5_Debug|x86
 		net_4_5_Release|Any CPU = net_4_5_Release|Any CPU
+		net_4_5_Release|x86 = net_4_5_Release|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7D64803D-2F8D-4597-9762-A316C74E9816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D64803D-2F8D-4597-9762-A316C74E9816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D64803D-2F8D-4597-9762-A316C74E9816}.Debug|x86.ActiveCfg = Debug|x86
+		{7D64803D-2F8D-4597-9762-A316C74E9816}.Debug|x86.Build.0 = Debug|x86
 		{7D64803D-2F8D-4597-9762-A316C74E9816}.net_4_5_Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D64803D-2F8D-4597-9762-A316C74E9816}.net_4_5_Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D64803D-2F8D-4597-9762-A316C74E9816}.net_4_5_Debug|x86.ActiveCfg = Debug|x86
+		{7D64803D-2F8D-4597-9762-A316C74E9816}.net_4_5_Debug|x86.Build.0 = Debug|x86
 		{7D64803D-2F8D-4597-9762-A316C74E9816}.net_4_5_Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D64803D-2F8D-4597-9762-A316C74E9816}.net_4_5_Release|Any CPU.Build.0 = Release|Any CPU
+		{7D64803D-2F8D-4597-9762-A316C74E9816}.net_4_5_Release|x86.ActiveCfg = Release|x86
+		{7D64803D-2F8D-4597-9762-A316C74E9816}.net_4_5_Release|x86.Build.0 = Release|x86
 		{7D64803D-2F8D-4597-9762-A316C74E9816}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D64803D-2F8D-4597-9762-A316C74E9816}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D64803D-2F8D-4597-9762-A316C74E9816}.Release|x86.ActiveCfg = Release|x86
+		{7D64803D-2F8D-4597-9762-A316C74E9816}.Release|x86.Build.0 = Release|x86
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.Debug|x86.ActiveCfg = Debug|x86
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.Debug|x86.Build.0 = Debug|x86
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.net_4_5_Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.net_4_5_Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.net_4_5_Debug|x86.ActiveCfg = Debug|x86
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.net_4_5_Debug|x86.Build.0 = Debug|x86
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.net_4_5_Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.net_4_5_Release|Any CPU.Build.0 = Release|Any CPU
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.net_4_5_Release|x86.ActiveCfg = Release|x86
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.net_4_5_Release|x86.Build.0 = Release|x86
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.Release|x86.ActiveCfg = Release|x86
+		{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

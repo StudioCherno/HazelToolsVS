@@ -100,6 +100,15 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HazelCSharpTemplateProject\HazelCSharpTemplateProject.csproj">
+      <Project>{46ABAFD5-DC8A-4441-82DD-4AD3928B6845}</Project>
+      <Name>HazelCSharpTemplateProject</Name>
+      <VSIXSubPath>ItemTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <GetVsixSourceItemsDependsOn>$(GetVsixSourceItemsDependsOn);IncludeNuGetResolvedAssets</GetVsixSourceItemsDependsOn>
   </PropertyGroup>
