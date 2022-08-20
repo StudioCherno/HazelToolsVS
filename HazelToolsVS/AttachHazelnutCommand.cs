@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.ComponentModel.Design;
 using System.Net;
-using System.IO;
+using System.Reflection;
 using Task = System.Threading.Tasks.Task;
 using HazelToolsVS.Debugging;
 using Microsoft.VisualStudio;
@@ -113,7 +113,7 @@ namespace HazelToolsVS
 				WorkingDirectory = HazelToolsPackage.Instance.SolutionEventsListener?.SolutionDirectory
 			};
 
-			var session = new HazelDebuggerSession(m_MenuItem);
+			var session = new HazelDebuggerSession();
 			session.Breakpoints.Clear();
 			var launcher = new MonoDebuggerLauncher(new Progress<string>());
 			launcher.StartSession(startInfo, session);

@@ -12,10 +12,10 @@ namespace HazelToolsVS.Debugging
 		private bool m_IsAttached;
 		private MenuCommand m_AttachToHazelnutMenuItem;
 
-		internal HazelDebuggerSession(MenuCommand attachToHazelnutMenuItem)
+		/*internal HazelDebuggerSession(MenuCommand attachToHazelnutMenuItem)
 		{
 			m_AttachToHazelnutMenuItem = attachToHazelnutMenuItem;
-		}
+		}*/
 
 		protected override void OnRun(DebuggerStartInfo startInfo)
 		{
@@ -28,7 +28,6 @@ namespace HazelToolsVS.Debugging
 			case HazelSessionType.AttachHazelnutDebugger:
 			{
 				m_IsAttached = true;
-				//m_AttachToHazelnutMenuItem.Enabled = false;
 				base.OnRun(hazelStartInfo);
 				break;
 			}
@@ -37,23 +36,11 @@ namespace HazelToolsVS.Debugging
 			}
 		}
 
-		protected override void OnAttachToProcess(ProcessInfo processInfo)
-		{
-			base.OnAttachToProcess(processInfo);
-			//m_AttachToHazelnutMenuItem.Enabled = false;
-		}
-
-		protected override string GetConnectingMessage(DebuggerStartInfo dsi)
-		{
-			return "Connecting to Hazelnut...";
-		}
-
 		protected override void OnConnectionError(Exception ex)
 		{
 			// The session was manually terminated
 			if (HasExited)
 			{
-				//m_AttachToHazelnutMenuItem.Enabled = true;
 				base.OnConnectionError(ex);
 				return;
 			}
@@ -62,7 +49,6 @@ namespace HazelToolsVS.Debugging
 			{
 				HasExited = true;
 				base.OnConnectionError(ex);
-				//m_AttachToHazelnutMenuItem.Enabled = true;
 				return;
 			}
 
@@ -85,7 +71,6 @@ namespace HazelToolsVS.Debugging
 			}
 			
 			_ = HazelToolsPackage.Instance.ShowErrorMessageBoxAsync("Connection Error", message);
-			//m_AttachToHazelnutMenuItem.Enabled = true;
 			base.OnConnectionError(ex);
 		}
 
@@ -100,8 +85,6 @@ namespace HazelToolsVS.Debugging
 			{
 				base.OnExit();
 			}
-
-			//m_AttachToHazelnutMenuItem.Enabled = true;
 		}
 	}
 }
